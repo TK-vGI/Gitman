@@ -1,0 +1,70 @@
+/* stage1
+// navigate to repository directory, check with git status, git branch
+// change file main.py in dir : repository
+
+git init			// Initialize an empty git repository
+git add main.py			// add file to stage
+git commit -m "Hello, world."	// commits changes
+
+end stage 1 */
+
+/* stage2
+// navigate to repository directory, check with git status, git branch
+// change file main.py in dir : repository
+
+git branch develop / or git-flow		// creates new branch : "develop"
+git checkout develop / git switch develop	// switch to newly created branch
+git add main.py					// add file to stage
+git commit -m "Greet user by the name"		// commits changes
+
+// if using git-flow instead of 1st line:
+git flow init	--> follow interactive instructions to create branch: develop and other auxiliary
+
+end stage 2 */
+
+/* stage3
+// change file main.py in dir : repository
+// navigate to repository directory, check with git status or git show --oneline or git log --oneline
+
+git add main.py			// add file to stage
+git commit --amend --no-edit	// changes the last commit, --no-edit doesn`t changes commit message
+
+end stage 3 */
+
+/* stage4
+// navigate to repository directory, check with git status, git branch
+
+git branch branch : hotfix/no-more-typos	// creates new branch : "hotfix/no-more-typos"
+git switch hotfix/no-more-typos			// switch to newly created branch
+
+// change file main.py in branch : hotfix/no-more-typos
+
+git add main.py					// add file to stage
+git commit -m "Fix typos"			// commits changes in branch : hotfix/no-more-typos
+
+git switch main					// switch to branch : main
+git merge -m "Fix typos" hotfix/no-more-typos 	// merge branch : hotfix... into main with new commit message
+
+end stage 4 */
+
+/* stage5
+// navigate to repository directory, check with git status, git branch
+- go to the develop branch and start the rebase on main with the command git rebase main;
+- Oops! It seems that git has problems with auto-merging the main.py file and warns you about it:
+  CONFLICT (content): Merge conflict in main.py
+- Open the main.py in an editor, fix the conflicts, and save the file. (Remove the lines with the conflict  markers, <<<<<<<, =======, >>>>>>>)
+- Then add the file to the git index (staging area), commit, and continue the rebase:
+  git rebase --continue
+
+end stage 5 */
+
+/* stage6
+// navigate to repository directory, check with git status, git branch
+
+git switch main
+git merge develop
+
+git remote add origin https://github.com/<your_username>/<your_repository> //https://github.com/TK-vGI/Gitman.git
+git push -u origin main	// push local repo "main" to remote repo "origin"
+
+end stage 6 */
