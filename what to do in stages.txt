@@ -18,7 +18,7 @@ git add main.py					// add file to stage
 git commit -m "Greet user by the name"		// commits changes
 
 // if using git-flow instead of 1st line:
-git flow init	--> follow interactive instructions to create branch: develop and other auxiliary
+git flow init	--> follow interactive instructions to create branch: develop and other auxiliary branches
 
 end stage 2 */
 
@@ -27,7 +27,7 @@ end stage 2 */
 // navigate to repository directory, check with git status or git show --oneline or git log --oneline
 
 git add main.py			// add file to stage
-git commit --amend --no-edit	// changes the last commit, --no-edit doesn`t changes commit message
+git commit --amend --no-edit	// changes the last commit, --no-edit doesn`t change commit message
 
 end stage 3 */
 
@@ -39,22 +39,28 @@ git switch hotfix/no-more-typos			// switch to newly created branch
 
 // change file main.py in branch : hotfix/no-more-typos
 
-git add main.py					// add file to stage
+git add main.py					      // add file to stage
 git commit -m "Fix typos"			// commits changes in branch : hotfix/no-more-typos
 
-git switch main					// switch to branch : main
+git switch main					                        // switch to branch : main
 git merge -m "Fix typos" hotfix/no-more-typos 	// merge branch : hotfix... into main with new commit message
 
 end stage 4 */
 
 /* stage5
 // navigate to repository directory, check with git status, git branch
-- go to the develop branch and start the rebase on main with the command git rebase main;
-- Oops! It seems that git has problems with auto-merging the main.py file and warns you about it:
-  CONFLICT (content): Merge conflict in main.py
-- Open the main.py in an editor, fix the conflicts, and save the file. (Remove the lines with the conflict  markers, <<<<<<<, =======, >>>>>>>)
-- Then add the file to the git index (staging area), commit, and continue the rebase:
-  git rebase --continue
+git switch develop
+git rebase main
+
+// Oops! It seems that git has problems with auto-merging the main.py file and warns you about it:
+// CONFLICT (content): Merge conflict in main.py
+// Open the main.py in an editor, fix the conflicts, and save the file. (Remove the lines with the conflict  markers, <<<<<<<,
+// =======, >>>>>>>)
+// Then add the file to the git index (staging area), commit, and continue the rebase:
+
+git add main.py
+git commit            // commit meassage should stay "Greet user by the name"
+git rebase --continue
 
 end stage 5 */
 
